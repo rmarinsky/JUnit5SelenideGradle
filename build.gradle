@@ -1,0 +1,46 @@
+group 'JUnit5SelenideGradle'
+version '0.1'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'ru.d10xa:gradle-allure-plugin:+'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3'
+    }
+}
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'ru.d10xa.allure'
+apply plugin: 'java'
+apply plugin: 'idea'
+
+compileTestJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+allure {
+    aspectjweaver = true
+    junit = true
+
+    allureResultsDir = "$buildDir/allure-results"
+    allureReportDir = "$buildDir/allure-report"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M3'
+    compile 'org.slf4j:slf4j-nop:1.7.22'
+    compile 'ru.yandex.qatools.allure:allure-junit-adaptor:1.5.2'
+    compile ('com.codeborne:selenide:4.3'){
+        exclude group: 'junit'
+    }
+    compile 'io.github.bonigarcia:webdrivermanager:1.6.0'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M3'
+}
