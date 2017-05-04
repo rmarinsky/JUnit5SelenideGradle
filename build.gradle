@@ -35,12 +35,13 @@ repositories {
 }
 
 dependencies {
-    compile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M3'
-    compile 'org.slf4j:slf4j-nop:1.7.22'
-    compile 'ru.yandex.qatools.allure:allure-junit-adaptor:1.5.2'
+    compile ('org.junit.jupiter:junit-jupiter-api:5.0.0-M3',
+            'org.slf4j:slf4j-nop:1.7.22',
+            'ru.yandex.qatools.allure:allure-junit-adaptor:1.5.2',
+            'io.github.bonigarcia:webdrivermanager:1.6.0',
+            'org.junit.jupiter:junit-jupiter-engine:5.0.0-M3'
+    )
     compile ('com.codeborne:selenide:4.3'){
         exclude group: 'junit'
     }
-    compile 'io.github.bonigarcia:webdrivermanager:1.6.0'
-    compile 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M3'
 }
